@@ -13,5 +13,6 @@ public class ArticleApplication {
         SpringApplication.run(ArticleApplication.class, args);
         System.out.println("dev");
         System.out.println("dev");
+        System.out.println("dev");
     }
 }
