@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.PoemDao">
+
+
+    <resultMap id="sel" type="Poem">
+        <id column="p_id" property="id"></id>
+        <result column="p_name" property="name"></result>
+        <result column="p_author" property="author"></result>
+        <result column="p_type" property="type"></result>
+        <result column="p_content" property="content"></result>
+        <result column="p_href" property="href"></result>
+        <result column="p_authordes" property="authordes"></result>
+        <result column="p_origin" property="origin"></result>
+        <result column="c_name" property="categoryName"></result>
+    </resultMap>
+    <select id="selectAll" resultMap="sel">
+		select p.id p_id ,p.name p_name,p.author p_author,p.type p_type,p.content p_content,p.href p_href,p.authordes p_authordes,
+		p.origin p_origin, c.id c_id ,c.name c_name
+		from t_poem p left join t_category c
+		on p.categoryId = c.id
+	</select>
+
+    <select id="selectOne" resultType="T_poem">
+		select * from t_poem where name=#{name}
+	</select>
+
+    <insert id="add">
+		insert into t_poem (id,name,author,content) values (#{t_poem.id},#{t_poem.name},#{t_poem.author},#{t_poem.content})
+	</insert>
+
+</mapper>
+
